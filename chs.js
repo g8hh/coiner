@@ -13,23 +13,23 @@ var cnItems = {
 
     //未分类：
     'Save': '保存',
-    'Export': '导出',
+    'export': '导出',
     'Import': '导入',
     'Settings': '设置',
     'Achievements': '成就',
     'Statistics': '统计',
     'Confirm': '确认',
     'Event Log': '事件日志',
-    '': '',
-    '': '',
-    '': '',
-    '': '',
-    '': '',
-    '': '',
-    '': '',
-    '': '',
-    '': '',
-    '': '',
+    'Download as file': '下载存档文件',
+    'Coins': '币',
+    'Coin Icon': '币图标',
+    'Thank you.': '感谢。',
+    'SUCCESS': '成就',
+    'STATS': '统计',
+    'Start': '开始',
+    'SETTINGS': '设置',
+    'SHOP': '商店',
+    'RESEARCH': '研究',
     '': '',
     '': '',
     '': '',
@@ -130,7 +130,9 @@ var cnPostfix = {
 
 //需排除的，正则匹配
 var cnExcludeWhole = [
-    /^\s*$/,
+    /^([\d\.]+)$/,
+    /^\* (.+)$/,
+    /^\$([\d\.,]+)$/,
 ];
 var cnExcludePostfix = [
 ]
