@@ -1,0 +1,997 @@
+
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+    <!--
+    Code COPYRIGHT 2014 by wernersbacher.de
+    
+    Cheating is easy, feel free to do so (if you want to, it's boring)
+    -->
+    <head>
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="font.css">
+        <link rel="stylesheet" href="default.css">
+        <link rel="stylesheet" href="powertip.css">
+        <link rel="stylesheet" href="progress.css">
+        <link rel="stylesheet" href="google.css">
+        <title>Bitcoiner - Javascript Click Game</title>
+
+        <meta name="copyright" content="wernersbacher">
+        <meta name="description" content="Use a Zuse Z3, an Core 2 Duo or even Kim Dotcom to mine Bitcoins. Research for mining faster and get into prestige mode!">
+        <meta name="keywords" content="bitcoiner,bitcoin,bitcoins,game,bitcoinergame,free,javascript,click,clicking,cookie clicker,idle">
+        <meta http-equiv="content-language" content="en">
+        <meta name="google-site-verification" content="INvJKzUP-LQA2kmdqFI2MfhLnHRaZyFFAAbhGlX3his" />
+
+        
+<script src="//likexia.gitee.io/game/js/jquery.min.js"></script>
+		<script type="text/javascript" src="backstretch2.min.js"> </script>
+<!--        <script type="text/javascript" src="piwik.js"></script>-->
+        <script type="text/javascript" src="powertip.js"></script>
+        <script type="text/javascript" src="firework.js"></script>
+        <!--<script type="text/javascript" src="graph.js"></script>-->
+
+        <script type="text/javascript" src="functions.js"></script>
+        <script type="text/javascript" src="achievs.js"></script>
+        <script type="text/javascript" src="hardware.js"></script>
+        <script type="text/javascript" src="research.js"></script>
+        <script type="text/javascript" src="prestige.js"></script>
+        <script type="text/javascript" src="dungeons.js"></script>
+        <script type="text/javascript" src="game.js"></script>
+
+
+    </head>
+
+    <body>
+<script src="chs.js?07071443"></script>
+<script src="//likexia.gitee.io/game/zh/core.js"></script>
+<!--
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+-->
+
+			        <div id="topBar">
+            <span id="gameSaved">game saved</span>
+
+
+            <span class="selectable">
+                bitcoinergame.com 0.7c1
+            </span>
+            <span class="linkBar" id="h2faq">FAQ</span>
+            <span class="linkBar" id="h2changelog">CHANGELOG</span>
+            <span class="linkBar" id="h2contact">CONTACT</span>
+            <!--<span class="linkBar" id="h2feed">FEEDBACK</span>-->
+
+            <span id="uhrzeit"></span>
+			<a id="header_port" href="http://www.wernersbacher.de" target="_blank">B-CLASS PHOTOS</a>            <span id="gold_wallet"><span id="coins">0</span> <img src="img/coin.png" style=" width:22px; margin-bottom: -2px;" /> <span id="prestigeID"></span></span>
+
+            <div id="randomButton">
+                randomEvent();
+            </div>
+
+            <div id="orangeline"></div>
+        </div>
+
+        <div id="topStats">
+            <div id="statsWidth">
+                <div id="begging">
+                    <span id="clickspeed"></span>
+                    <img id="begfirst" src="img/arrow.png" style="position:absolute; display:none; top:-6px; left:-50px;" />
+                </div>
+
+                <div class="walletDivs" id="statsBTC"> 
+                    BTC&emsp;<span id="btc">0</span><br/>
+                    Money&emsp;<span id="money">0</span><br/>	
+
+                </div>
+
+                <div class="walletDivs" id="statsMoney">
+
+                    BTC/s&emsp;<span id="btcs">0</span>  <img id="fastBTC" style="display:none;" src="img/fast.png" /> <br/>
+                    USD/BTC&emsp;<span id="btcusd" title="USD/BTC Chart value (average value)"">Loading </span> <img src="" style="display:none;" id="rateIMG" /><br/>
+
+                </div>
+
+
+                <div class="walletDivs" id="sellBTC"> 
+
+
+                    <span class="blackButton" id="sell_10">sell 10%</span>
+                    <span class="blackButton" id="sell_100">sell all</span>
+
+                </div>
+
+
+                <div class="walletDivs" id="quickSettings">
+
+                    <span class="blackButton" id="saveGame">save game</span>
+                    <span class="autosell" ><input type="checkbox" name="autosell" value="autosell" id="autosell"> <label title="1% selling fee - doesn't use selling researches" for="autosell">auto-sell</label></span>	
+
+
+                </div>				
+
+                <div id="boosttimer"></div>
+
+
+            </div>
+            <div id="h2menu">
+                <span id="h2mittig">
+                    <span class="h2link" id="h2main">YOUR MINING RIG</span> 
+                    <span class="h2link" id="h2res">RESEARCH</span>
+                    <span class="h2link" id="h2prestige">SHOP</span>
+                    <span class="h2link" id="h2raid" style="display:none;">ADVENTURE</span>
+                    <span class="h2link" id="h2tron" style="color:#00AAA5;">TRON</span>
+                    <span class="h2link" id="h2achievs">SUCCESS</span>
+                    <span class="h2link" id="h2stats">STATS</span>
+                    <!--<span class="h2link" id="h2chat">CHAT</span>-->
+                    <span class="h2link" id="h2settings">SETTINGS</span>
+                </span>
+            </div>
+
+
+        </div>
+
+        <div id="firework"> 
+            <canvas id="canvasFire">Canvas is not supported in your browser.</canvas>
+            <audio id="fireworkAudio"><source src="sounds/win.ogg" type="audio/ogg"><source src="sounds/win.mp3" type="audio/mpeg"><source src="sounds/win.wav" type="audio/wav"></audio>
+            <div id="fireworkText">
+                <span style="font-size:60px;">CONGRATULATIONS</span><br/>
+                You obtained every single achievement! Your work is done here (You also got 100 Coins).<br/>
+                Reset? Going further? It's up to you now.<br/>
+                <br/>
+                If you have feedback for me, write an email or use the feedback option.<br/>
+                Thank you for playing Bitcoiner!
+                <br/><br/>
+                Hint: If you want to open this amazing fireworks effect again,<br/>
+                just type <i>firework</i> into the command line!
+                <br/><br/>
+                <span style="font-weight:bold;" class="newFont">Danke an..</span><br/>
+                Thanks to all player, reddit for making the game "famous". Especially to all people who are giving feedback via mail, feedback function or chat. It's also your game.<br/>
+                Danke an alle Beta-Tester, free-way.me, ngb.to, RBF Clan, komische def-net Leute, andere die sowieso keiner von euch kennt sowie zuk�nftiger Spieler.<br/>
+                <a style="color:white;" href="https://www.free-way.me/forum/index.php?topic=2456.msg40554#msg40554">Hier wurde der kleine Bitcoiner am 19. Juni 2014 geboren</a>
+
+            </div>
+        </div>
+
+
+        <div class="popup" id="dynamic"> </div>
+				
+        <div id="box_links">
+            Sponsored Links
+
+            <hr>
+<!--			<script type='text/javascript' src='//eclkmpbn.com/adServe/banners?tid=98406_161772_3&size=158x21'></script>-->
+            <hr>
+
+            <div style="margin:3px 10px;">
+                <!--<img style=" height:600px; width:160px;" src="img/advert.png" />-->
+
+				<div style="width:160px; height:600px;">
+				<!-- BEGIN ADKLICK MULTIAD CODE -->
+				<!--<script src="http://partners.adklick.de/multiad.php?id=42740&amp;data=c082d6d142333f4fbe50fc85a2d22f32&amp;site=37147&amp;catid=9&amp;auswahl=1&amp;width=160&amp;height=600" type="text/javascript"></script>
+				<!-- END ADKLICK MULTIAD CODE -->
+				
+<!--				<script charset="utf-8" type="text/javascript" src="//www.kinguin.net/de/affiliatepluswidget/index/widget/?___store=kinguin_com_de_german&account_id=28408&category_group=bestsellers&is_image=0&is_price=1&is_rated=0&widget_size=160x600"></script><noscript><a href="https://www.kinguin.net/de/?r=28408">Kinguin.com.de</a></noscript>-->
+				
+				</div>
+
+                <div style="display:none;" id="platzhalter">
+                    It's your choice to use Adblock. 
+                    I would appreciate the opposite. Hosting is not free, I'm sorry! <br><br>
+                    You will get a small BTC/s bonus (x1.33) if you disable your Adblock.<br><br>
+                    wernersbacher
+                </div>
+            </div>
+
+            <hr>
+            <fb:like href="https://www.facebook.com/bitcoinergame" layout="button_count" action="like" show_faces="true" share="true"></fb:like>
+            <hr>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_donations">
+                <input type="hidden" name="business" value="mwernersbach@web.de">
+                <input type="hidden" name="lc" value="DE">
+                <input type="hidden" name="item_name" value="Bitcoiner Javascript Game">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+        </div>
+		
+		
+
+        <!-- Anfang Main Content -->
+        <div id="mainContent">
+            
+<!--						<div id="mitteBanner">Sponsored Links-->
+<!--                <div style="width:768px; height:90px;">-->
+				<!-- BEGIN ADKLICK MULTIAD CODE -->
+<!--				<script src="http://partners.adklick.de/multiad.php?id=42740&amp;data=93387d4813f32081cb2a493cb83e2652&amp;site=37147&amp;catid=9&amp;auswahl=1&amp;width=728&amp;height=90" type="text/javascript"></script>-->
+				<!-- END ADKLICK MULTIAD CODE -->
+				
+<!--				</div>-->
+				
+				
+<!--            </div>-->
+			
+            <div id="noscript">
+                This is a Javascript based game. Please allow Javascript in your browser.<br/>
+                If your browser doesn't support Javascript, get one like Google Chrome or Firefox.<br/>
+                Thanks!<br/><br/>
+                <a href="http://wernersbacher.de/impressum">Impressum/Legal Notice</a>
+            </div>
+            <!-- ------------------------- -->
+            <div id="storeAll" style="display:none;">
+                <div id="storeInfo" class="selectable">
+                    Machines owned: <span id="storeRed"><b><span id="storeOwned">0</span>/<span id="storeMax">0</span></b></span> |
+                    Your location: <b><span id="roomName">basement</span></b>
+                </div>
+                <ul id="store">
+
+
+                </ul>
+            </div>
+            <!-- ------------------------- -->
+            <div id="success">
+                <ul id="achiev">
+
+
+                </ul>	
+
+
+            </div>
+            <!-- ------------------------- -->
+
+            <div id="allstats">
+                <div id="stats">
+                    <span id="statsMade" class="whiteBox">
+                        Total Money Made (this game): <span id="stats_money">0</span><br/>
+                        Total Money Made (before reset): <span id="stats_moneyall">0</span><br/>
+                        Total Money Spent (this game): <span id="stats_moneyspent">0</span><br/>
+                        Time Wisely Used (this game): <span id="stats_timeSes">0</span><br/>
+                        Time Wisely Used (all time): <span id="stats_time">0</span><br/>
+                        <hr/>
+                        Hack Attacks: <span id="stats_attacks">0</span><br/>
+                        Random Events: <span id="stats_random">0</span><br/>
+                        TRON Rounds Played: <span id="tron_played">0</span><br/>
+                        TRON Highscore: <span id="tron_highscore">0</span>
+                    </span>
+                    <span id="statsRes" class="whiteBox">
+                        BTC/s Multi: <span id="res_multi">100</span>% <img title="100% base value. Shows the BTC/s percentage researched" class="smallH" src="img/help.png"/> <br/>
+                        Bonus Multi: <span id="reset_multi">100</span> <img title="100% base value. Shows the BTC/s percentage you bought in shop" class="smallH" src="img/help.png"/> <br/>
+                        Sell Percentage: <span id="res_sell">100</span>% <img title="100% base value. Shows the selling percentage researched" class="smallH" src="img/help.png"/> <br/>
+                        Clicking Power: <span id="res_clickpower">0</span>x BTC/s <img title="0x base value. Shows the click multiplier for hacking money" class="smallH" src="img/help.png"/><br/>
+                        Reduced Costs: <span id="res_buildcost">100</span>% of base cost <img title="100% base value. Shows the percentage you researched (smaller is better)" class="smallH" src="img/help.png"/> <br/>
+                        Hustler Multi: <span id="res_random">1</span>x base Multi <img title="1x base value. Shows the multiplier for money gifts (hustling) you researched" class="smallH" src="img/help.png"/> <br/>
+                        <hr/>
+                        Upgrades researched: <span id="res_sum">0</span><br/>
+                        Achievements: <span id="stats_achievs">0</span><br/>
+                        Machines owned: <span id="stats_machines">0</span>
+                    </span>
+                </div>
+
+                <div id="graphs" style="margin-left:20px;">	
+                    <!--last 12h, next update in <span id="graphTime"></span><br/>
+                    <div id="graph_money" style="width: 400px; height: 200px; display:inline-block;" class="graphGoogle"></div>
+                    <div id="graph_btc" style="width: 400px; height: 200px; display:inline-block;"  class="graphGoogle"></div>
+                    <div id="graph_money_alltime" style="width: 400px; height: 200px; display:inline-block;"  class="graphGoogle"></div>-->
+                    <!--<div id="graph_btcs" style="width: 400px; height: 200px; display:inline-block;" class="graphGoogle"></div>-->
+
+                    <span style="display:inline-block; width:400px;margin-left: 14px;" class="selectable">
+                        Improve your besttimes by using prestige system <br/>
+                        1 million: <span title="1000000" id="time_mio" class="bold"></span> (<span id="points_mio"></span> bad points)<br/>
+                        1 quadrillion: <span title="1000000000000000" id="time_quad" class="bold"></span> (<span id="points_quad"></span> bad points)<br/>
+                        1 septillion: <span title="1000000000000000000000000" id="time_sept" class="bold"></span> (<span id="points_sept"></span> bad points)<br/>
+                        1 decillion: <span title="1000000000000000000000000000000000" id="time_dec" class="bold"></span> (<span id="points_dec"></span> bad points)<br/>
+                        <br/>
+                    </span>
+                </div>
+                <br/>
+                <b>Event Log</b>
+                <div id="eventlog" class="selectable">
+
+
+
+                </div>
+
+            </div>
+            <!-- ------------------------- -->
+            <div id="research">	
+                <ul id="res">
+
+
+                </ul>
+
+
+                <span style="text-decoration:underline; cursor:pointer;" id="showRes">show upgrades researched</span> (hover to see what they do)
+                <div id="oldRes" style="text-transform:uppercase;">
+
+                </div>
+                <div id="devRes">
+
+                </div>
+
+            </div>
+            <!-- ------------------------- -->
+            <!--<div id="chat" style="margin-top:-7px;">
+                Make sure, you checked the FAQs! 
+                <a target="_blank" href="https://kiwiirc.com/client/irc.kiwiirc.com/#bitcoinergame">Open chat in new tab</a> 
+                <a target="_blank" href="http://www.reddit.com/r/BitCoinerGame/">reddit thread</a> <b>NEW: Own subreddit!</b>
+
+                <iframe src="https://kiwiirc.com/client/irc.kiwiirc.com/#bitcoinergame" style="border:1px solid black; width:800px; height:550px;"></iframe>
+                <br/>
+                Teamspeak 3 Server: <b>95.141.35.139:5707</b> (32 slots)<br/>
+
+
+            </div>
+            <!-- ------------------------- -->
+            <!--<div id="feedbackMain" class="goldenBox selectable">
+                    <span style="font-weight:bold;">Please give us your feedback! /Bitte geben Sie uns Ihr Feedback!</span>
+                    <br/><br/>
+                    
+                    Where did you hear about Bitcoiner? /Wie haben Sie von Bitcoiner erfahren?<br/>
+                    <input type="radio" name="from" value="freeway"> free-way.me<br/>
+                    <input type="radio" name="from" value="computerforum"> computerforum.de<br/>
+                    <input type="radio" name="from" value="ngb"> ngb.to<br/>
+                    <input type="radio" name="from" value="Google"> Google<br/>
+                    <input type="radio" name="from" value="reddit"> reddit<br/>
+                    <input type="radio" name="from" value="Freund"> Friends/Freunde<br/>
+                    <input type="radio" name="from" value="other"> other: <input id="fromother" style="width:200px;" maxlength="100" /> <br/><br/>
+                    
+                    You can also share your wishes, requests and suggestions with us:<br/>
+                    /Sie k�nnen uns ihre W�nsche und Anregungen mitteilen:<br/>
+                    <textarea id="feedText" style="width:400px; height:200px;" placeholder="Feel free!" maxlength="1000"></textarea><br/>
+                    
+                    If you got any questions, please read FAQs and/or ask for help in chat. <br/>
+                    Posting your mail address will perhaps result in answers from developer.
+                    <br/><br/>		
+                    <button id="sendFeed">Send to server</button> <span id="feedHint"></span>
+                    <br/><br/>
+                    Please send me a mail to <span class="email"></span>, if you got problems with "Abstinence"-achievement.
+            
+            
+            </div>-->
+            <!-- ------------------------- -->
+            <div id="settings" class="goldenBox selectable"> 
+                <span style="font-weight:bold;">Settings and Options</span><br/><br/>
+
+                &nbsp;Export and Import your savegame (backups, transfer to another computer)<br/>
+                >> Game does autosave every 20 seconds.<< <br/>
+                <button id="exportSave">export</button> <button id="importSave">import</button><br/><br/>
+                <textarea class="expimp" id="showSave"></textarea><br/>
+                <a id="downloadSave">Download as file</a>
+
+                <br/><br/><hr/><br/>
+                <button id="switchFormat">Switch big number formating</button><br/><br/>
+                <!--<label style="cursor:pointer;" title="Show cost for 1BTC/s" for="showQuote"><input type="checkbox" name="showQuote" value="showQuote" id="showQuote">  Show cost for 1 BTC/s</label><br/>-->
+                <label style="cursor:pointer;" title="Disable animations" for="hideHack"><input type="checkbox" name="hideHack" value="hideHack" id="hideHack">  Disable animations (for slow computers)</label><br/>
+                <!--<label style="cursor:pointer;" title="Old Design" for="oldDesign"><input type="checkbox" name="oldDesign" value="oldDesign" id="oldDesign">  Use old design without background</label>-->
+
+                <br/><br/><hr/><br/>
+                <button id="saveBackup">Make a Backup</button> You can later load your backup even if you resetted main savegame. Just for lazy people, export manually everytime.<br/>
+                <button id="loadBackup">Load Backup</button> (double click) Loads backup as main savegame and puts old main savegame as backup in storage.<br/>
+
+
+                <br/><hr/><br/>
+                &nbsp;<b>Prestige Mode</b><br/>
+                &nbsp;You'll keep achievements, coins and settings. <b>Everything else will be resetted.</b> Please export before you restart.<br/>
+                &nbsp;The amount of coins you will get is base on the money you made this game. (Earned coins don't influence prestige)<br/>
+                &nbsp;If you reset now, you would get <b>+<span id="prestige_bonus">0</span> Coins</b> and <span id="prestige_lvlup"></span><br/>
+                &nbsp;<i>Note: Keep in mind that it is harder to get coins on a higher prestige level.</i>
+                <br/><br/>
+                <span id="prestige_lvlup"></span>
+                <button id="newGame">Start Prestige Mode</button> <span id="presConfirm">Confirm: <button id="presYes">Restart</button> <button id="presCancel">Cancel</button></span>
+
+                <br/><br/>
+
+                <hr/>
+                <button	id="resetGame">Reset Game</button> (double click - wipe entire savegame, restart from zero - <b>THIS IS NOT PRESTIGE</b>)<br/><br/>
+
+
+            </div>
+            <!-- ------------------------- -->
+
+            <div id="prestige">
+                <span style="font-weight:bold;" class="newFont">Prestige Shop</span>  <img style="width:13px; margin-bottom:-1px;" src="img/help.png"/>
+                Get coins and levels through prestige mode. For further help see FAQs.<br/><i>Upgrades from shop are permanent.</i>
+                <br/><br/>	
+
+                <ul id="shop">
+
+
+                </ul>	
+                <br style="clear:both;"/>
+
+
+            </div>
+            <!-- ------------------------- -->
+
+            <div id="faq" class="goldenBox selectable">
+                <span style="font-weight:bold;" class="newFont">FAQs</span>
+
+                <span style="font-weight:bold;" class="newFont faqSub">Starting</span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How do I get money?</span>
+                    <span class="faqAnswer">A: Click the big "Hack some dollars" Button for instant $1. You can also sell your Bitcoins (BTC).
+                        <hr/></span>
+                </span>
+
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Well, how do I get Bitcoins?</span>
+                    <span class="faqAnswer">A: You have to buy your first mining machine, like the ZUSE Z3. Every machine has his own BTC per second rate, e.g. 0.5 BTC/s.
+                        You can sell BTC to get more money. (Auto-sell has a 1% fee and doesn't use upgrades)
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: What does "USD/BTC" mean? </span>
+                    <span class="faqAnswer">A: It's the current exchange rate for Bitcoin - US Dollar oriented to the realtime rate. Sell your BTC at a higher change to get even more money!  
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: I don't understand the hacking system.</span>
+                    <span class="faqAnswer">A: The basic hacking money is $1. After researching the "botnet" upgrades, you'll gain more money through hacking. Take a look on the formula:<br/>
+                        Money Per Click = $1 + (ResearchFactor[5|10|..]) * 0.8 * (Bitcoins/s + 0.7 * NumberOfZuseZ3Owned * Bitcoins/s)<br/>
+                        For every hack a certain counter will increase (maximum 500). On the way to 500 clicks, the money for every hack will be decreased. 
+                        After a while of not hacking, the counter will automatically decrase. (It's not a bug, it's a feature)
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How high is the chance that a random event appears?</span>
+                    <span class="faqAnswer">A: Once you researched "Asynchronous Functions", the chance to show is 1/80 every 3 seconds.<br/>
+                        If you bought the "Coincidence?" upgrade in shop, the chance is 1/60 every 3 seconds.
+                        <hr/></span>	
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: What are researches?</span>
+                    <span class="faqAnswer">A: Go to tab "Researches". You should see the Research Center. Pay for unlocking! The Research Center will unlock many further upgrades. 
+                        They will improve your BTC/s, your money for selling, more room for your rigs, and so on. It takes time to research them, but you can save time by paying money again.
+                        <hr/></span>	
+                </span>
+
+                <span style="font-weight:bold;" class="newFont faqSub">Prestige</span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: I can't buy anything in shop! I don't understand it.</span>
+                    <span class="faqAnswer">A: The shop is a good place to buy comprehensive upgrades. You need coins to pay.<br/>
+                        You get them trough <b>playing TRON</b>, <b>unlocking achievements</b> and <b>prestige mode.</b>
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Can I lose the upgrades from the shop?</span>
+                    <span class="faqAnswer">A: No. BTC/s Multi and so on are forever, you will only lose money bags and the ATI Mach. 
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How does the prestige system work? </span>
+                    <span class="faqAnswer">A: If you restart your game the first time, prestige mode is activated (Don't forget to export). For the next start you'll get coins; the amount of them is based on the money you made in this session.
+                        You will also get less coins for every Prestige Level you already got. It's harder to get 100 coins in Prestige 9 than in Prestige 1.<br/>
+                        <br/>
+                        <a href="http://www.wolframalpha.com/input/?i=%281000%2F50%29*%28log+base+10+of+%2810%5E-15x%29%29" target="_blank">WolframALPHA Formula</a>, where x is your money made this game.<br/>
+                        You don't have to calculate on your own, the game does it for you: Go to Settings -> Prestige Mode an see, how many coins you would get.<br/><br/>
+
+                        Note: It is possible to gain coins through game events, not only by prestige mode.<br/>
+                        Note: For your very first coin you need ~1 quadrillion dollars.
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How do I get a Prestige Level?</span>
+                    <span class="faqAnswer">A: If your restart bonus (see in Settings -> Prestige Mode) is equal to 75 coins (or even bigger), you will level up your prestige.<br/>
+                        After next restart you need 150 coins for a prestige level up, then 225, and so on.
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: I have already coins, but I'm Prestige 0. Why? </span>
+                    <span class="faqAnswer">A: You can also gain some coins through achievements, playing TRON and Random Events.
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Do I lose earned coins when I'm going to restart?</span>
+                    <span class="faqAnswer">A: No, there is no way to lose coins.
+                        <hr/></span>
+                </span>
+
+                <span style="font-weight:bold;" class="newFont faqSub">Advanced</span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How is the BTC/s boost determined?</span>
+                    <span class="faqAnswer">A: It depends on the amount of Vodoo Cards you have. Funny, I know
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Where is the difference between BTC/s Multiplier and BTC/s base multiplier?</span>
+                    <span class="faqAnswer">A: First one will change your overall BTC/s. Second one will increase the base BTC/s value of machines. 
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How do I unlock the adventure/dungeon/whatever mode?</span>
+                    <span class="faqAnswer">A: It gets unlocked if you buy your first ASIC Miner. BETA Status, don't expect too much! 
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How do I get awards?</span>
+                    <span class="faqAnswer">A: Bronze (25 rigs), Silver (50 rigs), Gold (100 rigs), Ruby (200 rigs), Emerald (500 rigs) and Diamond (1000 rigs)
+                        <hr/></span>
+                </span>
+
+                <span style="font-weight:bold;" class="newFont faqSub">Design & Gimmicks</span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Where do I see the cost per bitcoins/s?</span>
+                    <span class="faqAnswer">A: You have to check the checkbox in Settings tab.
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: What are bad points?</span>
+                    <span class="faqAnswer">A: Compare your besttimes with your friends using bad points. They are based on your Prestige Level and time needed. (Less points are better)
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Why are there no serverwide stats?</span>
+                    <span class="faqAnswer">A: This game is clientbased, you every player could change his money and so on. This would be a who-is-the-best-cheater highscore list.
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How do I open the command line?</span>
+                    <span class="faqAnswer">A: Just type <i>cmd</i> on your keyboard. Or click <span onclick='javascript:showCMD();' class='openCMD'>here</span>
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How do I use the classic design? I hate this shi**y background OR How do i use the kitty background?</span>
+                    <span class="faqAnswer">A: Open the command line, then type <i>classic.true</i> and confirm with your enter key. (Get other one back with <i>classic.false</i>)<br/>
+                        Activate your bought kitty background with <i>kitty</i>
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Remove the annoying ads!</span>
+                    <span class="faqAnswer">A: I won't, because hosting this game is no free (Doritos neither).<br/>
+                        Even though I see your point; I hate annyoing ads also. That's reason why I tried to position them user-friendly as good as possible.<br/>
+                        If you still want to remove them, use an Adblocker. I don't bother you.<br/>
+                        <hr/></span>
+                </span>
+
+                <span style="font-weight:bold;" class="newFont faqSub">Feedback and other questions</span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Only errors. Fix the game! </span>
+                    <span class="faqAnswer">A: Don't forget that you're playing in an beta version. If you find bugs, don't keep them! Email me or use the "feedback" option. Thank you
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: Is cheating allowed? </span>
+                    <span class="faqAnswer">A: Sure it is. Bitcoiner is a clientbased game, so you can change all variables, savegames and so on. <br/>
+                        If you want to, do so! (Even though it's boring)
+                        <hr/></span>
+                </span>
+
+                <span class="faqBlock">
+                    <span class="faqQuestion">Q: How can I support the game?</span>
+                    <span class="faqAnswer">A: Tell your friends about it. That's it! <b>www.bitcoinergame.com</b>
+                        <hr/></span>
+                </span>
+
+                <br/>
+                <i>Hint: English is not my first language.</i><br/>
+                <i>Hint: You could also ask in chat.</i>
+            </div>
+            <!-- ------------------------- -->
+            <div id="changelog" class="goldenBox selectable">
+                <span style="font-weight:bold;" class="newFont">Changelog</span><br/>
+                <i><b>Note: I stopped developing this game. I have not much time for developing this good but bad programmed, already well advanced game. Maybe there will be a sequel (don't expect anything).
+                        I thank you for playing bitcoinergame! My email address is still up and will be, so feel free to write me an email.
+                    </b></i>
+                <br/><br/>
+                <i>Note: Thanks for your feedback, maybe you will find your own stuff here. Keep checking changelog. <a target="_blank" href="/game.js">todo list</a><br/>
+                    check out our <a target="_blank" href="http://www.reddit.com/r/BitCoinerGame/">own subreddit</a> </i><br/>
+
+                <br/>
+                <i>19th Feb '16</i><br/>
+				* Removed one ugly ad because of some jQuery problems<br/>
+				* Test on a new server. I hope you won't lose your savegames.<br/>
+				
+                <br/>
+                <i>16th Feb '16</i><br/>
+				* Some bug fixes (autosell)<br/>
+				* Removed classic theme<br/>
+				* Showing the btc cost for every hardware item is not opt-in anymore<br/>
+				* Made the phonehous bosses stronger<br/>
+				
+                <br/>
+                <i>13th Feb '16</i><br/>
+				* <a href="http://www.kongregate.com/games/wernersbacher/bitcoiner-game">Play without ads on kongregate</a><br/>
+				
+                <br/>
+                <i>21st January '16</i><br/>
+				* There are now ugly ads! I will build an option where you can turn them off, if you are too annoyed. (I need some bucks to pay the domain)<br/>
+				
+                <br/>
+                <i>11th August '15</i><br/>
+                * dollar sign is on the left side (finally)<br/>
+                * added Google AdSense - hosting and domain is not for free :-(<br/>
+
+                <br/>
+                <i>3rd November '14</i><br/>
+                * "Doubletime"-Upgrade in shop<br/>
+
+                <br/>
+                <i>29th October '14</i><br/>
+                * smoother healthbar in adventure mode (+less cpu usage)<br/>
+                * new upgrade in shop: fast forwarding long battles (the first battle will last max. 25 seconds)<br/>
+
+                <br/>
+                <i>28th October '14</i><br/>
+                * small design fixes<br/>
+                * Only available hardware shows the cost per btc/s<br/>
+                * closed feedback function (I can't handle that much) - you can still send me feedback to <span class="email"></span><br/>
+
+                <br/>
+                <i>20th September '14</i><br/>
+                * added nearly infinte big numbers<br/>
+                * fixed the bug where you get the "new era" achievement without doing anything<br/>
+                <i>I have currently no time for developing, I'm really sorry. Thanks for playing.</i><br/>
+
+                <br/>
+                <i>29th August '14</i><br/>
+                * fixed Abstinence-achievement<br/>
+
+                <br/>
+                <i>28th August '14</i><br/>
+                * adverts online again<br/>
+                * easy to see which rig has the best cost-benefit ratio<br/>
+
+                <br/>
+                <i>24th August '14</i><br/>
+                * Tried to improve the FAQs<br/>
+                * some achievements should work now again (first silver, ruby, and so on)<br/>
+                * increased startbonus (2h instead of 1h, bonus is now x1.4 instead of 1.2)<br/>
+                * fixed townhall upgrade<br/>
+                * removed Chitika, because some ads were not adequate enough. Sorry for annoying you, I'll change ad provider again.<br/>
+                * added achievments for clicks<br/>
+                * getting coins on higher prestige is now a little bit easier<br/>
+                * Gold Digger gives you now more coins if you are in prestige levels<br/>
+                * decreased BTC/s bonus prices at shop<br/>
+                * BTC/s boost won't affect Adventure Mode anymore<br/>
+                * added another adventure mode level<br/>
+                * reduced room upgrade prices ins shop <br/>
+                * reduced money bag prices ins shop <br/>
+                * TRON can now be played with arrow keys<br>
+                * backgound is resizing with browser size<br/>
+                * received plenty of feedback ideas, but the next few days I can't update the game. They will come.<br/>
+                * Please send me a mail to <span class="mail"></span> if you can't get abstinence achievement.<br/>
+
+                <br/>
+                <i>23rd August '14</i><br/>
+                * Adventure mode will reset with prestige mode<br/>
+
+                <br/>
+                <i>22nd August '14</i><br/>
+                * some balancing, nerfed btc factor research further<br/>
+                * nerfed random machines<br/>
+                * experimental release of battle mode, you need to have at least 1 ASIC Miner (could be really buggy) (more content will come)<br/>
+                * menu order re-arranged<br/>
+                * splitted SUCCESS tab and added content to STATS tab<br/>
+                * replaced AdSense by Chitika<br/>
+
+                <br/>
+                <i>20th August '14</i><br/>
+                * improved mini tutorial<br/>
+                * added confirmation to prestige button, should work also on mobile devices<br/>
+                * new endgame research <br/>
+
+                <br/>
+                <i>19th August '14</i><br/>
+                * Nerfed BTC/s Factor Researches hard, some researches could now be too expensive - don't worry, I will balance them<br/>
+                * BTC/s multiplier over time refreshes now every 2 seconds<br/>
+                * changed "Prestige"-achievement coins from 500 to 300<br/>
+                * resized shop items<br/>
+                * made FAQs nicer, more questions will come<br/>
+                * you can switch cost for 1 btc/s in settings on and off<br/>
+                * Stats fixed<br/>
+                * new prestige level limits: 75, 150, 225, ... <br/>
+                * decreased prestige level influence on earned coins<br/>
+                * minor fixes<br/>
+
+                <br/>
+                <i>18th August '14</i><br/>
+                * button for doubling the TRON size<br/>
+                * removed 3 of 4 charts, they were cool but useless and took long to load<br/>
+                * added event log<br/>
+                * added shop upgrades for more room<br/>
+                * added clickspeed counter<br/>
+                * changed btc/s multiplier over time research: <b>  10^(TimeSinceResearch/8000) * BTC/s</b> instead of (TimeThisSessionPassed / 10000) * BTC/s<br/>
+                * new reached achievements will show the time you needed<br/>
+                * minor fixes and balancing<br/>
+
+                <br/>
+                <i>17th August '14</i><br/>
+                * added new research: level up your home to have enough space for new rigs<br/>
+                * nerfed randoms rewards (hustler), slightly increased chance to show<br/>
+                * increased slightly the amount of coins you'll get for prestige<br/>
+                * BUY 10 button is now really quick<br/>
+                * minor fixes<br/>
+
+                <br/>
+                <i>16th August '14</i><br/>
+                * USD/BTC was so low I had to fix it. Should be around $100 higher than the real price.<br/>
+                * TRON was stopping BTC/s, problem fixed<br/>
+                * added a FB Like button! More Hype!<br/>
+                * decreased hardware price increase<br/>
+                * fixed research bug (110% and 150% selling bonus)<br/>
+                * minor fixes<br/>
+
+                <br/>
+                <i>15th August '14</i><br/>
+                * added average USD/BTC price<br/>
+                * gem awards showed wrong names<br/>
+                * <a target="_blank" href="http://bitcoinergame.com/tron.html">beta tron game</a>, will come to game later<br/>
+                * added hardware image to tooltip<br/>
+                * added USD/BTC Bonus (x1.2) for the first hour of playing<br/>
+                * added a few hints for SUCCESS stats<br/>
+                * fixed stats bug (1435% made), but it will work only after reset<br/>
+                * refreshing site to change USD/BTC should not work anymore<br/>
+                * BTC/s boost will now show remaining time<br/>
+                * responsive design - ad position will change if you are using mobile device or small screen!<br/>
+                * added tron game with 2 new achievements<br/>
+
+                <br/>
+                <i>14th August '14</i><br/>
+                * "Reset Now"-achievement fixed<br/>
+                * "Abstinence"-achievement fixed<br/>
+                * changed red color to green in shop<br/>
+                * you can disable some animations now (for slow computers)<br/>
+                * added "Total Money Spent" and "Machines Owned" in Success<br/>
+                * new upgrade in shop ("Real Hustling")<br/>
+                * added new domain <b>bitcoinergame.com</b>, you can still reach it at <b>bitcoiner.wernersbacher.de</b><br/>
+                * for a prestige level up, you'll need 50 * (1 + PrestigeLevel) Coins<br/>
+                * changed prestige infos in settings<br/>
+                * you can now download your savegame as text file for fast export<br/>
+                * nerfed "BTC/s multiplier over time" hard, maybe I have to rebalance other things also.<br/>
+                * nerfed BTC/s boost<br/>
+                * nerfed click bonus (botnet upgrades)<br/>
+                * added night upgrades to shop<br/>
+                * fixed "last random"<br/>
+
+                <br/>
+                <i>13th August '14</i><br/>
+                * fixed besttime stats again (still don't know why charts are failing)<br/>
+                * researches are even more cheaper now<br/>
+                * kitty background is now stored in settings and can be disabled<br/>
+                * Achievements will give you a certain amount of coins<br/>
+                * nerfed BTC/s boost a little bit<br/>
+                * changed prestige again (you will get coins earlier, but less)<br/>
+                * added upgrades to shop<br/>
+
+                <br/>
+                <a href="oldchangelog.html" target="_blank">Older changes</a>
+
+            </div>
+            <!-- ------------------------- -->
+            <div id="raid" style="font-family:'Trebuchet MS'; font-size:12px;">
+                <img src="img/attention.png" /> This feature is BETA Status, use at your own risk (Don't forget to export)<br/><br/>
+
+                <div id="shops">
+
+                </div>
+
+                <div id="mainRaid">
+                    <div id="infoRaid"> <button id="startRaid">Start</button> <button id="stopRaid">Stop</button> <span id="spawnEnemies"></span> Enemie(s) left for boss</div>
+
+                    <div class="person" id="myselfRaid">
+
+                        <span class="statsRaid">
+                            <span class="nickRaid"></span><br/>
+                            <span class="nickBTC"></span> BTC
+                            | <span class="nickBTCs"></span> BTC/s
+                        </span>
+
+                        <span class="healthBG">
+                            <span class="health"></span>
+                        </span>
+
+                        <span class="figur">
+                            <img src="img/dun/enemy.png" />
+                        </span>
+
+                    </div>
+
+                    <div class="person" id="enemyRaid">
+                        <span class="statsRaid">
+                            <span class="nickRaid"></span><br/>
+                            <span class="nickBTC"></span> BTC
+                            | <span class="nickBTCs"></span> BTC/s
+                        </span>
+                        <span class="healthBG">
+                            <span class="health"></span>
+                        </span>
+
+                        <span class="figur">
+                            <img src="img/dun/enemy.png" />
+                        </span>
+                    </div>
+
+                    <div id="raidMessage">
+                        <span id="bigRaid"></span>
+                        <span id="miniRaid"></span> <button id="nextRaid"></button>
+                    </div>
+
+                </div>
+                <br/>
+                <span>
+                    Fight Enemies to encounter boss and beat the boss to get a reward. Level up stages to unlock more!<br/>
+                    Your health is your current amount of BTC/10. <br/>
+                    Please report bugs, feedback or hints as usual via chat or mail at  <span class="email"></span> - Thank you.
+                    <br/><br/>
+                    Better graphics and animations will come! (Really, someday..)
+
+                </span>
+
+
+            </div>
+            <!-- ------------------------- -->
+            <div id="tron">
+                <br/>
+
+                Use WASD/arrow keys to move, any other key to pause, Enter to restart<br/>
+                Startscreen is black! It's a feature (not a bug)
+                <br/><br/>
+                <canvas id="tronCan" width="400" height="260px" style="width:400px;height:260px;"></canvas><br/>
+                <button id="tronRestart">Restart Game</button>&nbsp;&nbsp;<button id="nrmlize">Normal Size</button><button id="dblsize">Double Size</button> <span id="tronLive">0</span> Points so far
+                <br/><br/>
+                You'll get the difference between your old and new highscore as coins.<br/>
+                The score is depending on your distance you reached. (Pixels/100)<br/>
+                Highscore will be reseted with prestige level up.<br/>
+                <br/><br/><a target="_blank" href="http://quaxio.com/tron/">code based on TRON 219 Bytes</a>
+
+            </div>
+            <!-- ------------------------- -->
+            <div id="contact" class="goldenBox">
+                <span style="font-weight:bold;" class="newFont">Contact</span><br/><br/>
+
+                General feedback, questions and comments?<br/><br/>
+
+                Just email me: <span class="email"></span>
+                <br/>
+                <a target="_blank" href="http://m.wernersbacher.de/pages/about-this-website/">Impressum/ Legal Notice</a>
+                <br/><br/>
+
+                Sources: <br/>
+                <a href="http://zpecter.deviantart.com/art/wallpaper-31-color-blur-171389714" target="_blank">Background Image</a><br/>
+                <a href="https://www.iconfinder.com/icons/58398/network_terminal_icon#size=16" target="_blank">Favicon</a><br/>
+                <a href="https://www.iconfinder.com/icons/227588/fast_forward_icon#size=16" target="_blank">BTC/s Boost Icon</a><br/>
+                <a href="https://www.iconfinder.com/icons/46208/ruby_icon#size=16" target="_blank">Ruby Icon</a><br/>
+                <a href="https://www.iconfinder.com/icons/50679/coin_icon#size=48" target="_blank">Coin Icon</a><br/>
+                <a href="https://www.iconfinder.com/icons/63430/check_correct_ok_yes_icon#size=32" target="_blank">Arrow Icon</a><br/>
+                <a href="https://www.iconfinder.com/icons/132010/" target="_blank">Locked Icon</a><br/>
+                <a href="https://www.flickr.com/photos/thomashawk/540936323" target="_blank">Money Image</a><br/>
+                <a href="https://www.flickr.com/photos/photobysimon/3260031999" target="_blank">Datacentre Image</a><br/>
+                <br/>
+                <a href="https://https://www.flickr.com/photos/torek/3280152297" target="_blank">Onlineshop Image</a><br/>
+                <a href="https://www.flickr.com/photos/82955120@N05/10567224894" target="_blank">Planet Image</a><br/>
+                <a href="https://www.flickr.com/photos/the_yes_man/4061467259" target="_blank">Market Image</a><br/>
+                <a href="https://www.flickr.com/photos/ro_buk/13996979447" target="_blank">Market 2 Image</a><br/>
+                <a href="https://www.flickr.com/photos/ncindc/11300347336" target="_blank">1875 Image</a><br/>
+                <a href="https://www.flickr.com/photos/derekskey/9093953476" target="_blank">Phone Image</a><br/>
+                <br/>
+                Hardware pics:<br/>
+                <a href="http://commons.wikimedia.org/wiki/File:Mach64gx.jpg" target="_blank">ATI Mach 64 Graphic</a><br/>
+                <a href="http://commons.wikimedia.org/wiki/File:Intel_Core_i3_540.jpg" target="_blank">Intel Core 2 Duo Graphic</a><br/>
+                <a href="http://commons.wikimedia.org/wiki/File:Ic-photo-AMD--AMD-K7600MTR51B_A-(K7-CPU)-slot-A.jpg" target="_blank">AMD Athlon K7 Graphic</a><br/>
+                <a href="http://commons.wikimedia.org/wiki/File:Pentium_II.jpg" target="_blank">Intel Pentium II Graphic</a><br/>
+                <a href="http://commons.wikimedia.org/wiki/File:Kim_Schmitz.jpg" target="_blank">Kim Dotcom Graphic</a><br/>
+                + cool Paint skills<br/>
+
+                <br/>
+                <br/>
+                Want to donate <b>real</b> bitcoins?<br/>
+                BTC: 1EWRVm1X441D9x8nL4xc7aAewrvTKETCCe<br/>
+                Doge: D71HW5JAUH8sWgQEENFyd1vZQGNbX2j37F<br/>
+
+                <br/><br/>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_donations">
+                    <input type="hidden" name="business" value="mwernersbach@web.de">
+                    <input type="hidden" name="lc" value="DE">
+                    <input type="hidden" name="item_name" value="Bitcoiner Javascript Game">
+                    <input type="hidden" name="no_note" value="0">
+                    <input type="hidden" name="currency_code" value="EUR">
+                    <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+                </form>
+                Keep the game alive: a dollar a day keeps the the doctor (not THE doctor) away.<br/>
+                If you want to get mentioned for donating, leave a hint.<br/><br/>
+				
+								
+				 <span style="font-weight:bold;" class="newFont">Advertising</span><br/>
+				 I'm using RevenueHits for advertising, because Goodle AdSense blocked me. Here is an ref link for you:<br/><br/>
+				 
+				 <a href="http://www.revenuehits.com/lps/pubref/?ref=@RH@ZMfF5kmuzWQd1_jb7Yz34g" target="_blank"><img src="http://revenuehits.com/publishers/media/img/v6/468x60_v6.jpg" border="0"></a><br/>
+				
+				
+				 
+
+            </div>
+        </div>
+        <!-- Ende Main Content -->
+				<!--<script type='text/javascript' src='//eclkmpbn.com/adServe/banners?tid=98406_161772_0&type=shadowbox&size=800x440'></script>-->
+<!--		<script type='text/javascript' src='//eclkmpbn.com/adServe/banners?tid=98406_161772_4&type=footer&size=728x90'></script>-->
+		        <div id="notes">
+
+
+        </div>
+
+
+        <div id="cmd">
+            <span>root@secretDevice:~$ </span> <textarea id="cmdText" maxlength="80" placeholder="type 'exit' to leave"></textarea>
+
+        </div>
+
+        <div id="preload">
+        </div>
+
+
+        <!--<div id="box_links">
+            <div style="position:absolute; top:-40px; left:11px; min-width:160px;">
+        <!--<div class="fb-like" data-href="https://www.facebook.com/bitcoinergame" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>-->
+        <!--<fb:like href="https://www.facebook.com/bitcoinergame" layout="button_count" action="like" show_faces="true" share="true"></fb:like>
+
+        <hr/>
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="mwernersbach@web.de">
+            <input type="hidden" name="lc" value="DE">
+            <input type="hidden" name="item_name" value="Bitcoiner Javascript Game">
+            <input type="hidden" name="no_note" value="0">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
+
+
+
+
+</div>-->
+
+
+
+
+<!--客服 开始-->
+<link rel="stylesheet" href="//likexia.gitee.io/game/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//likexia.gitee.io/game/js/kf.js"></script>
+<!-- 客服 结束 -->
+   <!--站长统计-->
+    <div style="display: none">
+        <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279902880&web_id=1279902880"></script>
+    </div>
+    </body>
+</html>

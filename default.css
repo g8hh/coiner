@@ -1,0 +1,1603 @@
+html {
+    height: 100%;
+}
+body {
+
+    font-family: 'Open Sans Condensed',"Trebuchet MS";
+    margin-top: 100px;
+    -webkit-user-select: none;  
+    -moz-user-select: -moz-none;     
+    -ms-user-select: none;  
+    background-attachment:fixed;
+
+}
+
+#preload {
+    display:none;
+}
+
+
+#topBar	{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:42px;
+    background-color:#232323;
+    padding:5px;
+    color:white;
+    text-align:center;
+    font-size:29px;
+    z-index:10;
+
+}
+
+#orangeline {
+    position:absolute;
+    width:100%;
+    height:3px;
+    background-color:rgb(189, 122, 0);
+    bottom:-1px;
+    left:0;
+    z-index:11;
+}
+
+#topStats {
+
+    position:fixed;
+    top:52px;
+    left:0;
+    width:100%;
+    height:80px;
+    background-color:#fff;
+    z-index:9;
+
+}
+
+#boosttimer {
+    position:absolute;
+    font-size:49px;
+    z-index:10;
+    right: 0px;
+    top: 2px;
+}
+
+#gameSaved {
+    position:fixed;
+    top:12px;
+    left:15px;
+    font-size:20px;
+    color:#EBB000;
+    opacity:0;
+}
+
+
+#mainContent {
+
+    min-height:500px;
+    width:900px;
+    margin-left:auto;
+    margin-right:auto;
+    border:0px grey solid;
+    padding-top:75px;
+
+}
+
+#allStats {
+    position:absolute;
+    right:20px;
+    top:7px;
+    text-align:left;
+    font-size:13px;
+}
+
+
+
+#begging {
+
+    width:153px;
+    height:44px;
+    background:url('img/begging.png');
+    background-repeat:none;
+    display:inline-block;
+    margin-bottom:-7px;
+    position:relative;
+
+}
+
+
+
+#begging:hover {
+
+    cursor:pointer;
+    background:url('img/begging2.png');
+
+}
+
+#begging:active {
+
+    background:url('img/begging3.png');
+
+}
+
+.showBegging {
+    position:absolute;
+    left:50px;
+    top:20px;
+    color:#EBB000;
+    font-size:22px;
+    padding:1px;
+    border-radius:4px;
+    font-family:"Trebuchet MS";
+    width:400px;
+    text-shadow:1px 1px 3px grey;
+
+}
+
+#clickspeed {
+    position:absolute;
+    font-family:"Trebuchet MS";
+    font-size:11px;
+    bottom:-11px;
+    left:15px;
+}
+
+#statsWidth {
+    position:relative;
+    width:900px;
+    margin:auto;
+}
+
+#statsBTC {
+    width:240px;
+}
+
+#statsMoney {
+    width:220px;
+}
+
+#sellBTC {
+    width:96px;
+}
+
+#quickSettings {
+    padding-left:10px;
+    width:120px;
+    margin-left:-30px;
+}
+
+#randomButton {
+    position:absolute;
+    border-radius:4px;
+    padding:5px;
+    font-size:24px;
+    font-weight:bold;
+    color:white;
+    left:-180px;
+    background:#232323;
+    top:-10px;
+    cursor:pointer;
+    display:none;
+    box-shadow: 0px 0px 13px -3px black;
+    z-index: 30;
+
+    text-shadow: 0px 1px 2px black;
+
+    background: rgb(130,75,75);
+    background: -moz-linear-gradient(top,  rgba(130,75,75,1) 0%, rgba(68,39,39,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(130,75,75,1)), color-stop(100%,rgba(68,39,39,1)));
+    background: -webkit-linear-gradient(top,  rgba(130,75,75,1) 0%,rgba(68,39,39,1) 100%);
+    background: -o-linear-gradient(top,  rgba(130,75,75,1) 0%,rgba(68,39,39,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(130,75,75,1) 0%,rgba(68,39,39,1) 100%);
+    background: linear-gradient(to bottom,  rgba(130,75,75,1) 0%,rgba(68,39,39,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#824b4b', endColorstr='#442727',GradientType=0 );
+
+}
+
+#randomButton:hover {
+
+    background: rgb(165,96,96);
+    background: -moz-linear-gradient(top,  rgba(165,96,96,1) 0%, rgba(107,62,62,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(165,96,96,1)), color-stop(100%,rgba(107,62,62,1)));
+    background: -webkit-linear-gradient(top,  rgba(165,96,96,1) 0%,rgba(107,62,62,1) 100%);
+    background: -o-linear-gradient(top,  rgba(165,96,96,1) 0%,rgba(107,62,62,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(165,96,96,1) 0%,rgba(107,62,62,1) 100%);
+    background: linear-gradient(to bottom,  rgba(165,96,96,1) 0%,rgba(107,62,62,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a56060', endColorstr='#6b3e3e',GradientType=0 );
+
+}
+
+
+.walletDivs {
+    font-size:18px;
+    height:55px;
+    padding:10px;
+    display:inline-block;
+
+}
+
+
+.autosell {
+    width:105px;
+    display:inline-block;
+    margin-left:-2px;
+    margin-top:1px;
+}
+
+
+.blackButton {
+    padding:0px 3px;
+    color:black;
+    display:block;
+    border-radius:3px;
+    border-bottom: 1px solid grey;
+    width:70px;
+
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(47%,rgba(246,246,246,1)), color-stop(100%,rgba(237,237,237,1))); 
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); 
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); 
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); 
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); 
+
+
+    transition:0.2s;
+    cursor:pointer;
+}
+
+
+
+.blackButton:hover {
+    background: rgb(239,239,239); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(239,239,239,1) 0%, rgba(246,246,246,1) 47%, rgba(219,219,219,1) 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,239,239,1)), color-stop(47%,rgba(246,246,246,1)), color-stop(100%,rgba(219,219,219,1))); 
+    background: -webkit-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(246,246,246,1) 47%,rgba(219,219,219,1) 100%); 
+    background: -o-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(246,246,246,1) 47%,rgba(219,219,219,1) 100%); 
+    background: -ms-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(246,246,246,1) 47%,rgba(219,219,219,1) 100%); 
+    background: linear-gradient(to bottom,  rgba(239,239,239,1) 0%,rgba(246,246,246,1) 47%,rgba(219,219,219,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#dbdbdb',GradientType=0 ); 
+    transition:0.2s;
+
+}
+
+.blackButton:active {
+    background: rgb(219,219,219); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(219,219,219,1) 0%, rgba(246,246,246,1) 47%, rgba(239,239,239,1) 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(219,219,219,1)), color-stop(47%,rgba(246,246,246,1)), color-stop(100%,rgba(239,239,239,1))); 
+    background: -webkit-linear-gradient(top,  rgba(219,219,219,1) 0%,rgba(246,246,246,1) 47%,rgba(239,239,239,1) 100%); 
+    background: -o-linear-gradient(top,  rgba(219,219,219,1) 0%,rgba(246,246,246,1) 47%,rgba(239,239,239,1) 100%); 
+    background: -ms-linear-gradient(top,  rgba(219,219,219,1) 0%,rgba(246,246,246,1) 47%,rgba(239,239,239,1) 100%); 
+    background: linear-gradient(to bottom,  rgba(219,219,219,1) 0%,rgba(246,246,246,1) 47%,rgba(239,239,239,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#efefef',GradientType=0 ); 
+
+    transition:0.2s;
+}
+
+
+
+#h2menu {
+    padding-bottom:10px;
+    clear:both;
+    font-weight:normal;
+    font-size:22px;
+    background:white;
+    width:100%;
+    margin:auto;
+}
+
+#h2mittig {
+    width:900px;
+    margin:auto;
+    display:block;
+}
+
+h3 {
+    font-weight:normal;
+    font-size: 24px;
+    padding:0;
+    margin-top:0;
+    color:white;
+
+}
+
+.h2link {
+    cursor:pointer;
+    margin-right:22px;
+}
+
+.h2link:hover {
+    text-shadow: 0px 1px 2px #BFBFBF;
+}
+
+#store {
+    list-style-type:none;
+    padding:0;
+}
+
+#store li {
+    margin-bottom:10px;
+}
+
+#store li ul {
+    list-style-type:none;
+    padding:0;
+    float:left;
+}
+
+
+#store li div {
+    padding:5px;
+    height:67px;
+    width:400px;
+
+    border-radius: 2px;
+    -webkit-box-shadow: 0 2px 25px -10px black;
+    -moz-box-shadow: 0 2px 25px -10px black;
+    box-shadow: 0 2px 20px -7px grey;
+    transition:0.2s;
+    margin-right:10px;
+}
+
+
+.green {
+    background: rgb(211,233,218); 
+    background: -moz-linear-gradient(top,  rgba(211,233,218,1) 0%, rgba(199,232,209,1) 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(211,233,218,1)), color-stop(100%,rgba(199,232,209,1))); 
+    background: -webkit-linear-gradient(top,  rgba(211,233,218,1) 0%,rgba(199,232,209,1) 100%); 
+    background: -o-linear-gradient(top,  rgba(211,233,218,1) 0%,rgba(199,232,209,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(211,233,218,1) 0%,rgba(199,232,209,1) 100%);
+    background: linear-gradient(to bottom,  rgba(211,233,218,1) 0%,rgba(199,232,209,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3e9da', endColorstr='#c7e8d1',GradientType=0 );
+    border: 1px solid rgba(200, 200, 200, 0.5);
+
+}
+
+.green:hover {
+    background: rgb(206,232,214);
+    background: -moz-linear-gradient(top,  rgba(206,232,214,1) 0%, rgba(188,229,200,1) 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(206,232,214,1)), color-stop(100%,rgba(188,229,200,1))); 
+    background: -webkit-linear-gradient(top,  rgba(206,232,214,1) 0%,rgba(188,229,200,1) 100%); 
+    background: -o-linear-gradient(top,  rgba(206,232,214,1) 0%,rgba(188,229,200,1) 100%); 
+    background: -ms-linear-gradient(top,  rgba(206,232,214,1) 0%,rgba(188,229,200,1) 100%); 
+    background: linear-gradient(to bottom,  rgba(206,232,214,1) 0%,rgba(188,229,200,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cee8d6', endColorstr='#bce5c8',GradientType=0 ); 
+}
+
+.white {
+
+    background:url("img/white-transparent.png") repeat-x;
+    opacity:0.9;
+    transition:0.3s;
+    border: 1px solid rgba(200, 200, 200, 0.2);
+
+}
+
+.white:hover {
+
+    opacity:1;
+    transition:0.3s;
+
+} 
+
+.floatingImg {
+    float:left;
+    margin:8px 4px;
+}
+
+
+#wrap {
+    height:15px;
+    width:0px;
+    color:transparent;
+    display:none;
+}
+
+#success {
+    cursor:default;
+    display:none;
+}
+
+#stats {
+    font-family:"Trebuchet MS";
+    clear:both;
+    width:100%;
+    font-size:12px;
+    margin-bottom:40px;
+}
+
+.whiteBox {
+    background:url(img/white.png);
+    border-radius:3px;
+    padding:7px;
+    width:47%;
+    display:inline-block;
+    margin-right:10px;
+    -webkit-box-shadow: 3px 3px 15px -8px rgb(121, 121, 121);
+    -moz-box-shadow: 3px 3px 15px -8px rgb(121, 121, 121);
+    box-shadow: 3px 3px 15px -8px rgb(121, 121, 121);
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.noShadow {
+    -webkit-box-shadow: 0 0 0 0 black;
+    -moz-box-shadow: 0 0 0 0 black;
+    box-shadow: 0 0 0 0 black;
+
+}
+
+#shop {
+    list-style-type:none;
+    padding:0;
+    font-size:12px;
+}
+
+#shop li {
+    margin-bottom:13px;
+    margin-right:13px;
+    float:left;
+}
+
+#shop li div div {
+    padding:8px;
+}
+
+.upgrade {
+    position:relative;
+    width:163px;
+    height:121px;
+    display:block;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+    text-align:justify;
+
+    -webkit-box-shadow: 0 2px 23px -12px black;
+    -moz-box-shadow: 0 2px 23px -12px black;
+    box-shadow: 0 2px 23px -12px black;	
+}
+
+
+.black_layer {
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.74);
+}
+
+.pres_label {
+    color:white;
+    font-family: 'Open Sans Condensed',"Trebuchet MS";
+    font-size:18px;
+    text-align:center;
+}
+
+.pres_desc {
+    color: rgba(255, 255, 255, 0.9); 
+    font-family: "Trebuchet MS";
+    padding:8px 14px !important;
+    text-shadow:1px 1px 2px black;
+}
+
+.pres_exp {
+    font-style: italic;
+    background:grey !important;
+    cursor:default !important;
+}
+
+.pres_owned {
+    font-style: italic;
+    background:rgba(0, 141, 0, 0.61) !important;
+    cursor:default !important;
+}
+
+.pres_submit {
+    position:absolute; 
+    color: rgb(0, 219, 0); 
+    top: -22px;
+    right: 8px;
+    font-family: "Trebuchet MS";
+    font-size:12px;
+    display:none;
+}
+
+.pres_buy {
+    height:37px;
+    color:white;
+    font-size:26px;
+    font-family: 'Open Sans Condensed',"Trebuchet MS";
+
+    text-align:center;
+    cursor:pointer;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    background: -moz-linear-gradient(top,  rgba(0,167,47,0.69) 0%, rgba(0,116,5,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,167,47,0.69)), color-stop(100%,rgba(0,116,5,1)));
+    background: -webkit-linear-gradient(top,  rgba(0,167,47,0.69) 0%,rgba(0,116,5,1) 100%);
+    background: -o-linear-gradient(top,  rgba(0,167,47,0.69) 0%,rgba(0,116,5,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(0,167,47,0.69) 0%,rgba(0,116,5,1) 100%);
+    background: linear-gradient(to bottom,  rgba(0,167,47,0.69) 0%,rgba(0,116,5,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b000a72f', endColorstr='#007405',GradientType=0 );
+
+}
+
+.pres_buy:hover {
+    background: -moz-linear-gradient(top,  rgba(0,178,47,0.61) 0%, rgba(0,127,0,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,178,47,0.61)), color-stop(100%,rgba(0,127,0,1)));
+    background: -webkit-linear-gradient(top,  rgba(0,178,47,0.61) 0%,rgba(0,127,0,1) 100%);
+    background: -o-linear-gradient(top,  rgba(0,178,47,0.61) 0%,rgba(0,127,0,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(0,178,47,0.61) 0%,rgba(0,127,0,1) 100%);
+    background: linear-gradient(to bottom,  rgba(0,178,47,0.61) 0%,rgba(0,127,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c00b22f', endColorstr='#007f00',GradientType=0 );
+}
+
+#achiev {
+    list-style-type:none;
+    padding:0;
+    font-size:12px;
+}
+
+#achiev li {
+    margin-bottom:8px;
+    margin-right:10px;
+    float:left;
+}
+
+#achiev li div {
+    padding:8px;
+    position:relative;
+}
+
+.achievPart {
+    width:74px;
+    height:72px;
+    display:block;
+    font-size:10px !important;
+    border-radius: 4px;
+
+    -webkit-box-shadow: 0 2px 25px -10px black;
+    -moz-box-shadow: 0 2px 25px -10px black;
+    box-shadow: 0 2px 25px -10px black;	
+}
+
+.achievTime {
+    position:absolute;
+    bottom:1px;
+    left:4px;
+    font-size:11px;
+    background:black;
+    padding: 0 1px;
+}
+
+.unlockedWhite { 
+
+    background-color:transparent;
+    background:url(img/white.png) repeat;
+    border-bottom:1px #006600 solid;
+
+    background: rgb(228,239,192);
+    background: -moz-linear-gradient(-45deg,  rgba(228,239,192,1) 0%, rgba(171,189,115,1) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(228,239,192,1)), color-stop(100%,rgba(171,189,115,1)));
+    background: -webkit-linear-gradient(-45deg,  rgba(228,239,192,1) 0%,rgba(171,189,115,1) 100%);
+    background: -o-linear-gradient(-45deg,  rgba(228,239,192,1) 0%,rgba(171,189,115,1) 100%);
+    background: -ms-linear-gradient(-45deg,  rgba(228,239,192,1) 0%,rgba(171,189,115,1) 100%);
+    background: linear-gradient(135deg,  rgba(228,239,192,1) 0%,rgba(171,189,115,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#abbd73',GradientType=1 );
+
+
+
+
+}
+
+.unlockedWhite span {
+    margin-top:-6px;
+    display:block;
+    font-size:18px;
+    color:black;
+
+}
+
+
+.unlocked {
+    background:#4D6600;
+    color:#E6E6E6;
+    color:white;
+
+
+    background: rgb(167,214,27); /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  rgba(167,214,27,1) 0%, rgba(138,182,107,1) 49%, rgba(59,124,54,1) 100%); 
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(167,214,27,1)), color-stop(49%,rgba(138,182,107,1)), color-stop(100%,rgba(59,124,54,1))); 
+    background: -webkit-linear-gradient(-45deg,  rgba(167,214,27,1) 0%,rgba(138,182,107,1) 49%,rgba(59,124,54,1) 100%); 
+    background: -o-linear-gradient(-45deg,  rgba(167,214,27,1) 0%,rgba(138,182,107,1) 49%,rgba(59,124,54,1) 100%); 
+    background: -ms-linear-gradient(-45deg,  rgba(167,214,27,1) 0%,rgba(138,182,107,1) 49%,rgba(59,124,54,1) 100%); 
+    background: linear-gradient(135deg,  rgba(167,214,27,1) 0%,rgba(138,182,107,1) 49%,rgba(59,124,54,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7d61b', endColorstr='#3b7c36',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    text-shadow:1px 1px 2px grey;
+
+}
+
+.unlocked span {
+    margin-top:-6px;
+    display:block;
+    font-size:16px;
+}
+
+
+.lockedWhite {
+    background-color:rgba(255, 255, 255, 0.26);
+    opacity:0.9;
+    border-bottom:1px #660000 solid;
+
+
+}
+
+.lockedWhite span {
+    margin-top:-6px;
+    display:block;
+    font-size:18px;
+    color:black;
+    font-style:italic;
+
+}
+
+
+.locked {
+    background:#B4AB93;
+    color:#E6E6E6;
+}	
+
+.locked span {
+    margin-top:-6px;
+    display:block;
+    font-size:16px;
+}
+
+
+#research {	
+    display:none;
+}
+
+#oldRes {
+    display:none;
+
+}
+
+#res {
+    list-style-type:none;
+    padding:0;
+}
+
+#res li {
+    margin-bottom:10px;
+    padding:5px;
+    height:100px;
+    width:820px;
+
+    border-radius: 2px;
+    -webkit-box-shadow: 0 2px 25px -10px black;
+    -moz-box-shadow: 0 2px 25px -10px black;
+    box-shadow: 0 2px 20px -7px grey;
+    transition:0.2s;
+    margin-right:10px;
+
+    border: 1px grey solid;
+    transition:0.2s;
+
+
+    background: rgb(223,237,180);
+    background: -moz-linear-gradient(top,  rgba(223,237,180,1) 0%, rgba(171,189,115,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(223,237,180,1)), color-stop(100%,rgba(171,189,115,1)));
+    background: -webkit-linear-gradient(top,  rgba(223,237,180,1) 0%,rgba(171,189,115,1) 100%);
+    background: -o-linear-gradient(top,  rgba(223,237,180,1) 0%,rgba(171,189,115,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(223,237,180,1) 0%,rgba(171,189,115,1) 100%);
+    background: linear-gradient(to bottom,  rgba(223,237,180,1) 0%,rgba(171,189,115,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfedb4', endColorstr='#abbd73',GradientType=0 );
+
+}
+
+#res li:hover {	
+    cursor:pointer;
+    background: -moz-linear-gradient(top,  rgba(228,239,192,1) 0%, rgba(171,189,115,0.85) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(228,239,192,1)), color-stop(100%,rgba(171,189,115,0.85)));
+    background: -webkit-linear-gradient(top,  rgba(228,239,192,1) 0%,rgba(171,189,115,0.85) 100%);
+    background: -o-linear-gradient(top,  rgba(228,239,192,1) 0%,rgba(171,189,115,0.85) 100%);
+    background: -ms-linear-gradient(top,  rgba(228,239,192,1) 0%,rgba(171,189,115,0.85) 100%);
+    background: linear-gradient(to bottom,  rgba(228,239,192,1) 0%,rgba(171,189,115,0.85) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#d9abbd73',GradientType=0 );	
+
+}
+
+#res .working {
+    background:rgb(255, 189, 69);
+}#res .working:hover {
+    background:rgb(255, 189, 69);
+}
+
+
+.resName {
+    display:block;
+    padding-left:15px; 
+    margin-top:-5px;
+    font-size:28px;
+    text-transform:uppercase;
+}
+
+.resMoney {
+    display:inline-block;
+    padding-left:15px; 
+    margin-top:-5px;
+    font-size:20px;
+}
+
+.resExpensive .resMoney {
+    color:rgb(179, 6, 6);
+
+}
+
+.resTime {
+    display:inline-block;
+    padding-left:0px; 
+    margin-top:-5px;
+    font-size:20px;
+
+}
+
+.payFaster {
+    margin-left: 4px;
+    background-color:rgba(0,0,0,0.1);
+    padding:1px 4px;
+    border-radius:3px;
+    cursor:pointer;
+}
+
+.payFaster:hover {
+    background-color:rgba(0,0,0,0.12);
+}
+
+.resExpensive {
+    cursor:default !important;
+
+    background: rgb(211,211,211);
+    background: -moz-linear-gradient(top,  rgba(211,211,211,1) 0%, rgba(181,181,181,1) 100%) !important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(211,211,211,1)), color-stop(100%,rgba(181,181,181,1))) !important;
+    background: -webkit-linear-gradient(top,  rgba(211,211,211,1) 0%,rgba(181,181,181,1) 100%) !important;
+    background: -o-linear-gradient(top,  rgba(211,211,211,1) 0%,rgba(181,181,181,1) 100%) !important;
+    background: -ms-linear-gradient(top,  rgba(211,211,211,1) 0%,rgba(181,181,181,1) 100%) !important;
+    background: linear-gradient(to bottom,  rgba(211,211,211,1) 0%,rgba(181,181,181,1) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3d3d3', endColorstr='#b5b5b5',GradientType=0 ) !important;
+
+}
+
+.resBody {
+    position:relative;
+}
+
+.resLevel {
+    position:absolute;
+    right:1px;
+    top:1px;
+    display:block;
+}
+
+
+.count {
+    color:grey;
+    font-size:16px;
+    text-transform: none !important;
+}
+
+
+.storeImg {
+    position:absolute;
+    bottom:6px;
+    left:8px;
+    width:40px;
+}
+
+.storeName {
+
+    display:block;
+    padding-left:3px; /* 80px wegen Bild!*/
+    margin-top:-5px;
+    font-size:24px;
+
+}
+
+.storeBTC {
+
+    display:block;
+    padding-left:51px;
+    padding-top:16px;
+    color:grey;
+    margin-top:-20px;
+
+}
+
+.storePrice {
+
+    display:inline-block;
+    padding-left:51px;
+    font-size:21px;
+    margin-top: -3px;
+    margin-right: 3px;
+
+}
+
+.storePriceBTCs {
+    font-size: 14px;
+}
+
+.bestCost {
+    color:rgb(27, 109, 27);
+    padding: 0px 2px;
+    background-color: rgba(0, 0, 0, 0.89);
+    color:rgb(47, 167, 52);
+    border-radius:3px;
+}
+
+.description {
+    position:relative;
+}
+
+
+.bronze {
+    right:5px;
+    background:url("img/bronze.png");
+}
+.silver {
+    right:26px;
+    background:url("img/silver.png");
+}
+.gold {
+    right:47px;
+    background:url("img/gold.png");
+}
+
+.ruby {
+    right:68px;
+    background:url("img/ruby.png");
+}
+
+.emerald {
+    right:89px;
+    background:url("img/emerald.png");
+}
+
+.diamond {
+    right:110px;
+    background:url("img/diamond.png");
+}
+
+.award {
+    bottom:5px;
+    width:16px;
+    height:16px;
+    position:absolute;
+    display:none;
+}
+
+.buy10 {
+    position:absolute;
+    color:#595959;
+    top:36px;
+    right:10px;
+    font-size:14px;
+    display:none;
+}
+
+.sell1 {
+    position:absolute;
+    color:#595959;
+    top:2px;
+    right:13px;
+    font-size:14px;
+    display:none;
+    cursor:pointer;
+}
+
+.sell10 {
+    position:absolute;
+    color:#595959;
+    top:19px;
+    right:7px;
+    font-size:14px;
+    display:none;
+    cursor:pointer;
+}
+
+.buy10:hover, .sell10:hover, .sell1:hover {
+
+    text-shadow: 1px 0px 5px grey;
+
+}
+
+
+
+.linkBar {
+
+    color:#EBB000;
+    font-size:25px;
+    margin-left:15px;
+    cursor:pointer;
+
+}
+
+.popup{
+
+    position:absolute;
+    top:100px;
+    left:50%;
+    margin-left:-350px;
+
+    color:white;
+    width:700px;
+    min-height:300px;
+    font-size:14px;
+    font-family:"trebuchet MS";
+    text-align:justify;
+
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    display:none;
+    z-index:13;
+
+    -webkit-box-shadow: 0 5px 12px -6px black;
+    -moz-box-shadow: 0 5px 12px -6px black;
+    box-shadow: 0 5px 12px -6px black;
+
+    text-shadow: 0 1px 2px black;
+
+    padding: 20px;
+    background:black;
+    color:#E4CE8D;
+
+    background: url("img/black_back.jpg") center top;
+
+
+}
+
+
+#overlay
+{
+    background-color: #000;
+    opacity: .75;
+    filter: alpha(opacity=85);
+    position:fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 11;
+    display:none;
+}
+
+#firework {
+    background-color: rgba(0,0,0, 0.9);
+    position:fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 16;
+    display:none;
+    overflow:hidden;
+}
+
+#canvas {
+    display:block;
+}
+
+#fireworkText {
+    width:600px;
+    height:400px;
+    margin:auto;
+    margin-left:-300px;
+    margin-top:-200px;
+    top:50%;
+    left:50%;
+    position:absolute;
+    z-index:10;
+    text-align:center;
+    color:white;
+
+}
+
+.expimp {
+    width:870px;
+    height:100px;
+    resize: none;
+    outline: none;
+    overflow: auto;
+
+    background:transparent;
+    color:black;
+}
+
+#notes {
+    position:fixed;
+    bottom:40px;
+    left:50%;
+    margin-left:-160px;
+    width:250px;
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+}
+
+#notes span {
+    opacity:0.9;
+    color:black;
+    background:black;
+    padding:5px 10px;
+    display:block;
+    margin-top:10px;
+    border: 1px solid black;
+
+    border-radius:8px;
+    background: rgb(213,206,166);
+    background: -moz-linear-gradient(top,  rgba(213,206,166,1) 0%, rgba(201,193,144,1) 40%, rgba(183,173,112,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(213,206,166,1)), color-stop(40%,rgba(201,193,144,1)), color-stop(100%,rgba(183,173,112,1)));
+    background: -webkit-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(201,193,144,1) 40%,rgba(183,173,112,1) 100%);
+    background: -o-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(201,193,144,1) 40%,rgba(183,173,112,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(213,206,166,1) 0%,rgba(201,193,144,1) 40%,rgba(183,173,112,1) 100%);
+    background: linear-gradient(to bottom,  rgba(213,206,166,1) 0%,rgba(201,193,144,1) 40%,rgba(183,173,112,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5cea6', endColorstr='#b7ad70',GradientType=0 );
+
+
+    -webkit-box-shadow: 0px 6px 13px -5px black;
+    -moz-box-shadow: 0px 6px 13px -5px black;
+    box-shadow: 0px 6px 13px -5px black;
+
+}
+
+#eventlog {
+    font-style:"Trebuchet MS";
+
+}
+
+#eventlog div {
+    color:black;
+    background:rgba(255, 255, 255, 0.62);
+    padding:5px 10px;
+    display:block;
+    margin-top:10px;
+    border: 1px solid black;
+    border-radius:4px;
+
+    -webkit-box-shadow: 0px 4px 9px -6px black;
+    -moz-box-shadow: 0px 4px 9px -6px black;
+    box-shadow: 0px 4px 9px -6px black;
+}
+
+h4 {
+    padding:0;
+    margin:0;
+    font-size:20px;
+    text-transform:uppercase;
+
+
+}
+
+#cmd {
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:19px;
+    color: #CCCCCC;
+    font-family:Courier;
+    font-size:12px;
+    background: #000000;
+    border-top: 3px double #CCCCCC;
+    padding:5px;
+    color:white;
+    display:none;
+
+}
+
+#cmdText {
+
+    width:640px;
+    height:13px;
+    resize: none;
+    outline: none;
+    overflow: auto;
+    display:inline-block;
+    background:black;
+    color:white;
+    margin-left:3px;
+    border:0;
+    overflow:hidden;
+    font-size:12px;
+
+}
+
+#cmd span {
+
+    padding-top:2px;
+    height:21px;
+    float:left;
+
+}
+
+.cmdInfo {
+    width:500px;
+    margin-left:-135px;
+
+}
+
+.openCMD {
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+#allstats {
+    display:none;
+
+}
+
+#chat {
+    border: 0px solid black;
+    margin-top:20px;
+    display:none;
+    -o-user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    user-select: text;
+    font-family:"Trebuchet MS";
+    font-size:12px;
+
+}
+
+#channel {
+    margin-bottom:10px;
+    margin-top:4px;
+    padding:5px;
+    height:550px;
+    overflow-y:scroll;
+}
+
+.channelWhite {
+    border-radius:4px;
+    border:1px grey solid;
+    background: url("img/white.png") repeat;
+    padding:10px;
+}
+
+#channel span {
+    position:relative;
+
+}
+
+#channel span img {
+    margin-bottom:-3px;
+}
+
+.timeChat {
+    font-size:12px;
+
+}
+
+.delText {
+    position:absolute;
+    left:-3px;
+
+}
+
+.delText:hover {
+    text-shadow:1px 1px 2px;
+    cursor:pointer;
+
+}
+.smallH {
+    width:12px; 
+    margin-bottom:-1px;
+    cursor:help;
+    opacity:0.65;
+}
+
+.chatmenu {
+    color: white;
+    cursor:pointer;
+    padding: 0 2px;
+    border-radius:4px;
+    background:rgba(99, 1, 1, 0.85);
+    border: 1px solid grey;
+    text-transform:uppercase;
+    margin-right:2px;
+}
+
+#message {
+    margin-top:7px;
+}
+
+#powerTip {
+    -webkit-user-select: text;  
+    -moz-user-select: text;     
+    -ms-user-select: text;  
+}
+
+#nickError {
+    color:red;
+}
+#nickTrue {
+    color:green;
+}
+
+#feedbackMain {
+    display:none;
+
+}
+
+#settings {
+    display:none;
+    font-family:"Trebuchet MS" !important;
+    font-size:12px;
+}
+
+
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hidden {
+    display:none;
+}
+
+#gold_wallet {
+    position:absolute;
+    top:10px;
+    right:18px;
+    color:white; 
+    font-size:23px;
+}
+
+#uhrzeit {
+    margin-left:10px;
+    font-size:25px;
+    cursor:default;
+}
+
+.graphGoogle {
+    border-radius:3px;
+    border:1px solid black;
+    background-color: rgba(120,120,120,0.5);
+    -moz-box-shadow:    2px 2px 10px -5px #000;
+    -webkit-box-shadow: 2px 2px 10px -5px #000;
+    box-shadow:         2px 2px 10px -5px #000;
+    margin: 5px 20px 10px 0;
+}
+
+#faq {
+    font-family:"Trebuchet MS";
+    font-size:12px;
+    display:none;
+    text-align:justify;
+}
+
+#changelog {
+    font-family:"Trebuchet MS";
+    font-size:12px;
+    display:none;
+    text-align:justify;
+}
+
+#prestige {
+    font-family:"Trebuchet MS";
+    font-size:12px;
+    display:none;
+    text-align:justify;
+}
+
+.coin_wallet {
+    font-size:45px;
+}
+
+.goldenBox {
+    background-color: rgba(255, 255, 255, 0.67);
+    padding:10px;
+    border-radius:3px;
+    border:1px solid rgba(0, 0, 0, 0.22);
+    -moz-box-shadow:inset 0 1px 9px -7px #000;
+    -webkit-box-shadow:inset 0 1px 9px -7px #000;
+    box-shadow:inset 0 1px 9px -6px #000;
+}
+
+#contact {
+    font-family:"Trebuchet MS";
+    font-size:12px;
+    display:none;
+    text-align:justify;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+#tron {
+    font-family:"Trebuchet MS";
+    font-size:12px;
+    display:none;
+    text-align:justify;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.newFont {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: initial;
+}
+
+
+a:link, a:visited  {
+    color: black;
+    /*background-color:rgba(99, 1, 1, 0.85);*/
+    border-radius:3px;
+    padding:0 2px;
+    transition: 0.15s;
+}
+
+a:hover {
+    color: white;
+    background-color:rgba(99, 1, 1, 0.85);
+
+}
+
+#shadow {
+    position:fixed;
+    top:0;
+    left:0;
+
+    -moz-box-shadow:inset 0 1px 9px -2px #000;
+    -webkit-box-shadow:inset 0 1px 9px -2px #000;
+    box-shadow:inset 0 1px 9px -2px #000;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width:100%;
+    z-index:-1;
+}
+
+#box_links {
+
+    position: absolute;
+    min-height: 600px;
+    min-width: 120px;
+    left: 0;
+    top: 125px;
+    padding-top: 8px;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 9px -2px #000;
+    -webkit-box-shadow: 0 1px 9px -2px #000;
+    box-shadow: 0 1px 9px -2px #000;
+    background: -moz-linear-gradient(left, rgba(0,0,0,0.49) 0%, rgba(0,0,0,0.25) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.49)), color-stop(100%,rgba(0,0,0,0.25)));
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0.49) 0%,rgba(0,0,0,0.25) 100%);
+    background: -o-linear-gradient(left, rgba(0,0,0,0.49) 0%,rgba(0,0,0,0.25) 100%);
+    background: -ms-linear-gradient(left, rgba(0,0,0,0.49) 0%,rgba(0,0,0,0.25) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.29) 0%,rgba(0, 0, 0, 0.14) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d000000', endColorstr='#40000000',GradientType=1 );
+    background: rgba(0, 0, 0, 0.14);
+    z-index: 9;
+}
+
+#mitteBanner {
+    font-family: Trebuchet MS;
+    font-size: 12px;
+}
+
+.platzhalter {
+    border: 1px solid rgb(151, 0, 0);
+    background-color:rgba(255, 166, 166, 0.53);
+    color:black;
+    font-family:"trebuchet MS";
+    font-size: 11px;
+    text-align:justify;
+    padding:10px;
+    display:none;
+}
+
+#platzhalter_sky {
+    width:140px;
+    height:580px;
+}
+
+#platzhalter_banner {
+    width:428px;
+    height:50px;
+    padding:5px;
+    font-size: 11px;
+}
+
+#zuse {
+    position:relative;
+}
+
+#sell_100 {
+    position:relative;
+}
+
+.bold {
+    font-weight:bold;
+}
+
+.selectable, .email {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.faqSub {
+    display:block;
+    margin-top:10px;
+    margin-bottom:2px;
+}
+
+.faqBlock {
+    display:block;
+    margin-bottom:5px;
+}
+
+.faqQuestion {
+    display:block;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.faqAnswer {
+    display:none;
+    margin-bottom:3px;
+}
+
+#presConfirm {
+    display:none;
+}
+
+#raid {
+    display:none;
+}
+
+#mainRaid {
+    position:relative;
+    min-height:380px;
+    margin-top:10px;
+    font-family: "Coming Soon";
+    background-image:url(img/dun/back.jpg);
+    width:860px;
+    visibility:hidden;
+    cursor:default;
+}
+
+#raidMessage {
+    position:absolute;
+    width:500px;
+    min-height:200px;
+    border-radius:4px;
+    font-weight:bold;
+    top:65px;
+    left:177px;
+    color:white;
+    text-shadow: 1px 2px 5px black;
+    text-align:center;
+}
+
+#bigRaid {
+    font-size:100px;
+    display:block;
+}
+
+#nextRaid {
+    display:none;
+}
+
+#infoRaid {
+    margin: 15px;
+    padding: 5px;
+    color: white;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius:3px;
+}
+
+#shops {
+    font-family: 'Open Sans Condensed',"Trebuchet MS";
+}
+
+.raid_building {
+    display:inline-block;
+    min-width:100px;
+    border:1px solid rgba(0, 0, 0, 0.53);
+    border-radius:4px;
+    text-align:center;
+    margin-right:20px;
+    margin-bottom:5px;
+    padding: 2px 10px;
+    cursor:pointer;
+}
+
+.raid_building:hover {
+    background:white;
+    -webkit-box-shadow: 0 2px 25px -10px black;
+    -moz-box-shadow: 0 2px 25px -10px black;
+    box-shadow: 0 2px 20px -7px grey;
+}
+
+.raid_label {
+    font-size:20px;
+}
+
+.raid_level {
+    font-size:49px;
+    display:block;
+}
+
+.person {
+    display:inline-block;
+    margin:0 14px;
+    margin-top:-5px;
+    width:400px;
+    min-height:300px;
+    float:left;
+}
+
+.healthBG {
+    display:block;
+    width:390px;
+    height:30px;
+    margin:5px;
+    border-radius:3px;
+    background-color:black;
+    text-align:center;
+    z-index:1;
+}
+
+.health {
+    display:block;
+    z-index:2;
+    background-color:rgb(202, 32, 32); 
+    height:100%; 
+    width:88%; 
+    border-radius:3px;
+
+    background: rgb(193,3,26);
+    background: -moz-linear-gradient(top,  rgba(193,3,26,1) 0%, rgba(145,0,26,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(193,3,26,1)), color-stop(100%,rgba(145,0,26,1)));
+    background: -webkit-linear-gradient(top,  rgba(193,3,26,1) 0%,rgba(145,0,26,1) 100%);
+    background: -o-linear-gradient(top,  rgba(193,3,26,1) 0%,rgba(145,0,26,1) 100%);
+    background: -ms-linear-gradient(top,  rgba(193,3,26,1) 0%,rgba(145,0,26,1) 100%);
+    background: linear-gradient(to bottom,  rgba(193,3,26,1) 0%,rgba(145,0,26,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1031a', endColorstr='#91001a',GradientType=0 );
+
+}
+
+.statsRaid {
+    display:block;
+    width:390px;
+    height:50px;
+    margin:5px;
+    border-radius:3px;
+    background-color: rgba(255, 255, 255, 0.81);
+    text-align:center;
+    font-size:17px;
+}
+
+a#header_port {
+   color:#1CE6EF;
+   font-size:27px;
+   text-decoration:none;
+   margin-left:10px;
+}
+
+a#header_port:hover {
+    color: black;
+    font-size: 27px;
+    text-weight:700;
+    background-color:white;
+}
