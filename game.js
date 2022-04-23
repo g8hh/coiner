@@ -2533,10 +2533,10 @@ http://wernersbacher.de/impressum for Address (I'm serious)
 						
 						z.fillStyle="#fff";
 						z.font = '22pt Courier';
-						z.fillText('GAME OVER', 120, 50);
+						z.fillText('游戏结束', 120, 50);
 						z.font = '10pt Courier';
-						z.fillText('Highscore: '+hscore+" - Round: "+s, 103, 70);
-						if(coinsNew > 0) z.fillText("Gained "+coinsNew+" coin(s)!", 140, 85);
+						z.fillText('最高分: '+hscore+" - 回合: "+s, 103, 70);
+						if(coinsNew > 0) z.fillText("获得 "+coinsNew+" 金币!", 140, 85);
 					}
 				}
 				if(key == 87 || key == 38) { //W
