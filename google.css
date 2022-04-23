@@ -1,0 +1,13 @@
+
+
+@media(min-width: 1310px) { 
+	#mitteBanner { 
+		display: none; 
+	}
+}
+
+@media(max-width: 1300px){
+	#box_links {
+		display:none;
+	}
+}
